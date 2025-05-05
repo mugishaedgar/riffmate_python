@@ -1,36 +1,38 @@
-<!-- templates/band_detail.html -->
 {% extends "base.html" %}
 {% load static %}
 
 {% block title %}{{ band.name }} | RiffMates{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card shadow-lg border-0">
-        <div class="bg-dark text-white text-center py-5">
-            <h1 class="display-4 fw-bold mb-3">
+<div class="container">
+    <div class="card shadow-sm border-0 overflow-hidden">
+        <!-- Header Section -->
+        <div class="bg-primary text-white text-center py-4">
+            <h1 class="display-5 fw-bold mb-0">
                 {{ band.name }}
             </h1>
         </div>
 
-        <div class="card-body">
-            <h3 class="mb-4">
-                <i class="bi bi-people-fill me-2"></i>
+        <div class="card-body p-4">
+            <h3 class="mb-4 border-bottom pb-3">
+                <i class="bi bi-people-fill me-2" style="color: var(--primary-color);"></i>
                 Band Members
             </h3>
             
-            <div class="row g-3">
+            <div class="row g-4">
                 {% for musician in band.musicians.all %}
                 <div class="col-md-4">
-                    <div class="card h-100">
+                    <div class="card h-100 shadow-sm border-0">
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h5 class="card-title text-dark mb-3">
                                 {{ musician.first_name }} {{ musician.last_name }}
                             </h5>
-                            <p class="card-text text-muted">
+                            <p class="card-text text-muted small mb-4">
                                 Born {{ musician.birth|date:"F j, Y" }}
                             </p>
-                            <a href="{% url 'musician_detail' musician.id %}" class="btn btn-sm btn-outline-primary">
+                            <a href="{% url 'musician_detail' musician.id %}" 
+                               class="btn btn-primary w-100 py-2">
+                                <i class="bi bi-person-circle me-2"></i>
                                 View Profile
                             </a>
                         </div>
@@ -38,8 +40,8 @@
                 </div>
                 {% empty %}
                 <div class="col-12">
-                    <div class="alert alert-warning">
-                        <i class="bi bi-exclamation-triangle me-2"></i>
+                    <div class="alert bg-light-primary rounded text-primary border-0">
+                        <i class="bi bi-info-circle-fill me-2"></i>
                         This band currently has no members.
                     </div>
                 </div>

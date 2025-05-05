@@ -3,14 +3,40 @@
 {% block title %}News | RiffMates{% endblock %}
 
 {% block content %}
-  <h1 class="fs-2 fw-bold mb-4 text-primary">📰 Latest News</h1>
-  <div class="bg-white p-4 rounded shadow-sm border">
-    <ul class="ps-4 mb-0">
+<div class="container">
+  <div class="mb-4 pb-2 border-bottom border-primary">
+    <h1 class="display-6 fw-bold text-primary mb-0">
+      Latest News
+      <small class="d-block text-muted fs-5 mt-2">Stay updated with the music scene</small>
+    </h1>
+  </div>
+
+  <div class="bg-white p-4 rounded-3 shadow-sm">
+    <ul class="list-unstyled mb-0">
       {% for item in news %}
-        <li class="text-dark fs-5 mb-2">{{ item }}</li>
+        <li class="d-flex align-items-center mb-3 p-3 bg-light-primary rounded-2">
+          <i class="bi bi-newspaper me-3 text-primary fs-5"></i>
+          <span class="text-dark fs-5">{{ item }}</span>
+        </li>
       {% empty %}
-        <li class="text-muted fst-italic">No news available at the moment.</li>
+        <li class="text-center py-5">
+          <div class="bg-light-primary rounded-3 p-4 d-inline-block">
+            <i class="bi bi-info-circle-fill text-primary fs-4 me-2"></i>
+            <span class="text-primary">No news available at the moment</span>
+          </div>
+        </li>
       {% endfor %}
     </ul>
   </div>
+</div>
+
+<style>
+  .bg-light-primary {
+    background-color: rgba(96, 126, 188, 0.1);
+  }
+  
+  .border-primary {
+    border-color: var(--primary-color) !important;
+  }
+</style>
 {% endblock %}
