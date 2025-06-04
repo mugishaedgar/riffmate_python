@@ -4,28 +4,302 @@
 {% block title %}{{ musician.first_name }} {{ musician.last_name }} | RiffMates{% endblock %}
 
 {% block content %}
-<div class="welcome-section">
-    <div>
-      <h1 class="display-4 fw-bold">🎸 Welcome to Riffmates News</h1>
-      <p class="lead mt-3">
-        Dive into the rhythm of real stories, breaking updates, and music that
-        speaks. This is where riffs meet reality.
-      </p>
-      <a href="{% url 'news' %}" class="btn btn-outline-light btn-lg mt-4">
+
+<div class="welcome-container">
+  <div class="glass-panel">
+    <div class="logo-container">
+      <img src="{% static 'logo.png' %}" alt="RiffMates Logo" class="brand-logo">
+      <div class="logo-badge">NEW</div>
+    </div>
+    
+    <h1 class="welcome-title">
+      <span class="title-icon">🎸</span>
+      Welcome to Riffmates News
+    </h1>
+    
+    <p class="welcome-subtitle">
+      Dive into the rhythm of real stories, breaking updates, and music that speaks. 
+      This is where riffs meet reality.
+    </p>
+    
+    <div class="cta-container">
+      <a href="{% url 'news' %}" class="primary-cta">
         Start Reading
+        <span class="cta-icon">→</span>
+      </a>
+      <a href="#" class="secondary-cta">
+        Explore Features
       </a>
     </div>
+    
+    <div class="social-proof">
+      <div class="user-avatars">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+      </div>
+      <p class="social-text">Join 2,500+ musicians in our community</p>
+    </div>
   </div>
-  <style>
-    .welcome-section {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #1f1f1f, #3c3c3c);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+  
+  <div class="background-elements">
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+  </div>
+</div>
+
+<style>
+  /* Base Styles */
+  :root {
+    --primary: #6C63FF;
+    --primary-dark: #564FC9;
+    --secondary: #FF6584;
+    --dark: #1A1A2E;
+    --darker: #16213E;
+    --light: #F1F1F1;
+    --glass: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--darker);
+    color: var(--light);
+    overflow-x: hidden;
+  }
+  
+  /* Main Container */
+  .welcome-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+  }
+  
+  /* Glass Panel */
+  .glass-panel {
+    max-width: 800px;
+    padding: 3.5rem;
+    background: linear-gradient(135deg, var(--glass), rgba(26, 26, 46, 0.7));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+  
+  /* Logo */
+  .logo-container {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  
+  .brand-logo {
+    height: 80px;
+    filter: drop-shadow(0 4px 12px rgba(108, 99, 255, 0.3));
+  }
+  
+  .logo-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--secondary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    transform: rotate(15deg);
+  }
+  
+  /* Typography */
+  .welcome-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--light) 20%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.03em;
+  }
+  
+  .title-icon {
+    display: inline-block;
+    margin-right: 0.5rem;
+    transform: rotate(-10deg);
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+  }
+  
+  /* Buttons */
+  .cta-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .primary-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .primary-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(108, 99, 255, 0.4);
+  }
+  
+  .primary-cta:active {
+    transform: translateY(0);
+  }
+  
+  .cta-icon {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .primary-cta:hover .cta-icon {
+    transform: translateX(3px);
+  }
+  
+  .secondary-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+    border-radius: 50px;
+    font-weight: 500;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .secondary-cta:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+  }
+  
+  /* Social Proof */
+  .social-proof {
+    margin-top: 3rem;
+  }
+  
+  .user-avatars {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    margin: 0 -8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .user-avatars img:hover {
+    transform: translateY(-5px);
+    z-index: 1;
+  }
+  
+  .social-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Background Elements */
+  .background-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.15;
+  }
+  
+  .circle-1 {
+    width: 300px;
+    height: 300px;
+    background: var(--primary);
+    top: -100px;
+    right: -100px;
+  }
+  
+  .circle-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--secondary);
+    bottom: -150px;
+    left: -100px;
+  }
+  
+  .circle-3 {
+    width: 200px;
+    height: 200px;
+    background: #00D4FF;
+    top: 50%;
+    left: 30%;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .glass-panel {
       padding: 2rem;
+      border-radius: 16px;
     }
-  </style>
+    
+    .welcome-title {
+      font-size: 2.2rem;
+    }
+    
+    .welcome-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    .cta-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
 {% endblock %}
